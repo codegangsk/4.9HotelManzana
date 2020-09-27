@@ -15,6 +15,7 @@
 		2A8C2525251DCFB000A8E4DF /* __9HotelManzanaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8C2524251DCFB000A8E4DF /* __9HotelManzanaTests.swift */; };
 		2A8C2530251DCFB000A8E4DF /* __9HotelManzanaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8C252F251DCFB000A8E4DF /* __9HotelManzanaUITests.swift */; };
 		2A8C2544251DD15200A8E4DF /* model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8C2543251DD15200A8E4DF /* model.swift */; };
+		2A8C2551251DD94500A8E4DF /* AddRegistrationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8C2550251DD94500A8E4DF /* AddRegistrationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		2A8C252F251DCFB000A8E4DF /* __9HotelManzanaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = __9HotelManzanaUITests.swift; sourceTree = "<group>"; };
 		2A8C2531251DCFB000A8E4DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A8C2543251DD15200A8E4DF /* model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model.swift; sourceTree = "<group>"; };
+		2A8C2550251DD94500A8E4DF /* AddRegistrationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRegistrationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				2A8C250D251DCFAF00A8E4DF /* AppDelegate.swift */,
 				2A8C250F251DCFAF00A8E4DF /* SceneDelegate.swift */,
 				2A8C2513251DCFAF00A8E4DF /* Main.storyboard */,
+				2A8C2550251DD94500A8E4DF /* AddRegistrationTableViewController.swift */,
 				2A8C2516251DCFB000A8E4DF /* Assets.xcassets */,
 				2A8C2518251DCFB000A8E4DF /* LaunchScreen.storyboard */,
 				2A8C251B251DCFB000A8E4DF /* Info.plist */,
@@ -260,6 +263,7 @@
 			files = (
 				2A8C250E251DCFAF00A8E4DF /* AppDelegate.swift in Sources */,
 				2A8C2544251DD15200A8E4DF /* model.swift in Sources */,
+				2A8C2551251DD94500A8E4DF /* AddRegistrationTableViewController.swift in Sources */,
 				2A8C2510251DCFAF00A8E4DF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
