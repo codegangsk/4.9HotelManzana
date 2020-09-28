@@ -25,7 +25,7 @@ class AddRegistrationTableViewController: UITableViewController {
     
     @IBOutlet var wifiSwitch: UISwitch!
     
-    let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"], ["numberOfAdults", "numberOfChildren"], ["Wi-Fi"]]
+    let arrayToCountRows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"], ["numberOfAdults", "numberOfChildren"], ["Wi-Fi"]]
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
@@ -61,7 +61,7 @@ extension AddRegistrationTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Rows[section].count
+        return arrayToCountRows[section].count
     }
     
     @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
