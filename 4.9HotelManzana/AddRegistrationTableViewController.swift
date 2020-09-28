@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddRegistrationTableView: UITableViewController {
+class AddRegistrationTableViewController: UITableViewController {
     
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
@@ -18,20 +18,37 @@ class AddRegistrationTableView: UITableViewController {
     @IBOutlet var checkOutDateLabel: UILabel!
     @IBOutlet var checkOutDatePicker: UIDatePicker!
     
+    let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"]]
+    
+    let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
+    let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+    
+    var isCheckInDatePickerShown: Bool = false {
+        didSet {
+            checkInDatePicker.isHidden = !isCheckInDatePickerShown
+        }
+    }
+    
+    var isCheckOutDatePickerShown: Bool = false {
+        didSet {
+            checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
+        }
+    }
+    
     override func viewDidLoad() {
+        updateDateViews()
         super.viewDidLoad()
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
-        updateDateViews()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return Rows[section].count
     }
     
     @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -61,5 +78,23 @@ class AddRegistrationTableView: UITableViewController {
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath {
+        case checkInDatePickerCellIndexPath:
+            if isCheckInDatePickerShown {
+                return 216.0
+            }  else {
+                return 0.0
+            }
+        case checkOutDatePickerCellIndexPath:
+            if isCheckOutDatePickerShown {
+                return 216.0
+            } else {
+                return 0.0
+            }
+        default:
+            return 44.0
+    }
 }
-
+}
