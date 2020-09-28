@@ -18,6 +18,11 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var checkOutDateLabel: UILabel!
     @IBOutlet var checkOutDatePicker: UIDatePicker!
     
+    @IBOutlet var numberOfAdultsLabel: UILabel!
+    @IBOutlet var numberOfAdultsStepper: UIStepper!
+    @IBOutlet var numberOfChildrenLabel: UILabel!
+    @IBOutlet var numberOfChildrenStepper: UIStepper!
+    
     let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"]]
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
