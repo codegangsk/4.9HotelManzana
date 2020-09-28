@@ -23,7 +23,9 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var numberOfChildrenLabel: UILabel!
     @IBOutlet var numberOfChildrenStepper: UIStepper!
     
-    let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"], ["numberOfAdults", "numberOfChildren"]]
+    @IBOutlet var wifiSwitch: UISwitch!
+    
+    let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"], ["numberOfAdults", "numberOfChildren"], ["Wi-Fi"]]
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
@@ -55,7 +57,7 @@ extension AddRegistrationTableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,6 +72,7 @@ extension AddRegistrationTableViewController {
         let checkOutDate = checkOutDateLabel.text ?? ""
         let numberOfAdults = Int(numberOfAdultsStepper.value)
         let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
         
         print("DONE TAPPED")
         print("firstName: \(firstName)")
@@ -79,6 +82,7 @@ extension AddRegistrationTableViewController {
         print("checkOut: \(checkOutDate)")
         print("numberOfAdults: \(numberOfAdults)")
         print("numberOfChildren: \(numberOfChildren)")
+        print("wifi: \(hasWifi)")
     }
     
     func updateDateViews() {
@@ -103,6 +107,9 @@ extension AddRegistrationTableViewController {
         updateNumberOfGuests()
     }
     
+    @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
+        
+    }
 }
 
 extension AddRegistrationTableViewController {
