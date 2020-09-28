@@ -23,7 +23,7 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var numberOfChildrenLabel: UILabel!
     @IBOutlet var numberOfChildrenStepper: UIStepper!
     
-    let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"]]
+    let Rows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"], ["numberOfAdults", "numberOfChildren"]]
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
@@ -46,15 +46,16 @@ class AddRegistrationTableViewController: UITableViewController {
 
 extension AddRegistrationTableViewController {
     override func viewDidLoad() {
-        updateDateViews()
         super.viewDidLoad()
         let midnightToday = Calendar.current.startOfDay(for: Date())
         checkInDatePicker.minimumDate = midnightToday
         checkInDatePicker.date = midnightToday
+        updateDateViews()
+        updateNumberOfGuests()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -67,6 +68,8 @@ extension AddRegistrationTableViewController {
         let email = emailTextField.text ?? ""
         let checkInDate = checkInDateLabel.text ?? ""
         let checkOutDate = checkOutDateLabel.text ?? ""
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
         
         print("DONE TAPPED")
         print("firstName: \(firstName)")
@@ -74,6 +77,8 @@ extension AddRegistrationTableViewController {
         print("email: \(email)")
         print("checkIn: \(checkInDate)")
         print("checkOut: \(checkOutDate)")
+        print("numberOfAdults: \(numberOfAdults)")
+        print("numberOfChildren: \(numberOfChildren)")
     }
     
     func updateDateViews() {
@@ -88,6 +93,16 @@ extension AddRegistrationTableViewController {
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
     }
+    
+    func updateNumberOfGuests() {
+        numberOfAdultsLabel.text = "\(Int(numberOfAdultsStepper.value))"
+        numberOfChildrenLabel.text = "\(Int(numberOfChildrenStepper.value))"
+    }
+    
+    @IBAction func stepperValueChanged(_ sender: UIStepper) {
+        updateNumberOfGuests()
+    }
+    
 }
 
 extension AddRegistrationTableViewController {
