@@ -20,6 +20,10 @@ class AddRegistrationTableView: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let midnightToday = Calendar.current.startOfDay(for: Date())
+        checkInDatePicker.minimumDate = midnightToday
+        checkInDatePicker.date = midnightToday
+        updateDateViews()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -34,18 +38,28 @@ class AddRegistrationTableView: UITableViewController {
         let firstName = firstNameTextField.text ?? ""
         let lastName = lastNameTextField.text ?? ""
         let email = emailTextField.text ?? ""
+        let checkInDate = checkInDateLabel.text ?? ""
+        let checkOutDate = checkOutDateLabel.text ?? ""
         
         print("DONE TAPPED")
         print("firstName: \(firstName)")
         print("lastName: \(lastName)")
         print("email: \(email)")
+        print("checkIn: \(checkInDate)")
+        print("checkOut: \(checkOutDate)")
     }
     
     func updateDateViews() {
+        checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
+        
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
         checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
+    }
+    
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        updateDateViews()
     }
 }
 
