@@ -7,7 +7,15 @@
 
 import UIKit
 
-class AddRegistrationTableViewController: UITableViewController {
+class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeTableViewControllerDelegate {
+    let arrayToCountRows: [[String]] = [
+    ["First Name","Last Name","Email"],
+    ["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"],
+    ["numberOfAdults", "numberOfChildren"],
+    ["Wi-Fi"],
+    ["Room Type"]
+]
+    
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -16,7 +24,24 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBOutlet var checkInDatePicker: UIDatePicker!
     @IBOutlet var checkOutDateLabel: UILabel!
     @IBOutlet var checkOutDatePicker: UIDatePicker!
-    
+
+let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
+let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
+let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
+let checkOutDateLabelCellIndexPath = IndexPath(row: 2, section: 1)
+
+var isCheckInDatePickerShown: Bool = false {
+    didSet {
+        checkInDatePicker.isHidden = !isCheckInDatePickerShown
+    }
+}
+
+var isCheckOutDatePickerShown: Bool = false {
+    didSet {
+        checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
+    }
+}
+
     @IBOutlet var numberOfAdultsLabel: UILabel!
     @IBOutlet var numberOfAdultsStepper: UIStepper!
     @IBOutlet var numberOfChildrenLabel: UILabel!
@@ -24,25 +49,9 @@ class AddRegistrationTableViewController: UITableViewController {
     
     @IBOutlet var wifiSwitch: UISwitch!
     
-    let arrayToCountRows: [[String]] = [["First Name","Last Name","Email"],["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"], ["numberOfAdults", "numberOfChildren"], ["Wi-Fi"]]
+    @IBOutlet var roomTypeLabel: UILabel!
+var roomType: RoomType?
     
-    let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
-    let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
-    
-    let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
-    let checkOutDateLabelCellIndexPath = IndexPath(row: 2, section: 1)
-    
-    var isCheckInDatePickerShown: Bool = false {
-        didSet {
-            checkInDatePicker.isHidden = !isCheckInDatePickerShown
-        }
-    }
-    
-    var isCheckOutDatePickerShown: Bool = false {
-        didSet {
-            checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
-        }
-    }
 }
 
 extension AddRegistrationTableViewController {
@@ -53,6 +62,7 @@ extension AddRegistrationTableViewController {
         checkInDatePicker.date = midnightToday
         updateDateViews()
         updateNumberOfGuests()
+        updateRoomType()
     }
     
     @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
@@ -100,11 +110,32 @@ extension AddRegistrationTableViewController {
     
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
     }
+    
+    func updateRoomType() {
+        if let roomType = roomType {
+            roomTypeLabel.text = roomType.name
+        } else {
+            roomTypeLabel.text = "Not Set"
+        }
+    }
+    
+    func didSelect(roomType: RoomType) {
+        self.roomType = roomType
+        updateRoomType()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectRoomType" {
+            let destinationViewController = segue.destination as? SelectRoomTypeTableViewController
+            destinationViewController?.delegate = self
+            destinationViewController?.roomType = roomType
+        }
+    }
 }
 
 extension AddRegistrationTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
