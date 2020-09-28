@@ -8,7 +8,6 @@
 import UIKit
 
 class AddRegistrationTableViewController: UITableViewController {
-    
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -55,14 +54,6 @@ extension AddRegistrationTableViewController {
         updateDateViews()
         updateNumberOfGuests()
     }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayToCountRows[section].count
-    }
     
     @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
         let firstName = firstNameTextField.text ?? ""
@@ -108,11 +99,18 @@ extension AddRegistrationTableViewController {
     }
     
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
-        
     }
 }
 
 extension AddRegistrationTableViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayToCountRows[section].count
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case checkInDatePickerCellIndexPath:
