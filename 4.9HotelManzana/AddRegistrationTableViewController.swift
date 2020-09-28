@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddRegistrationTableViewController: UITableViewController {
+class AddRegistrationTableView: UITableViewController {
     
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
@@ -40,4 +40,12 @@ class AddRegistrationTableViewController: UITableViewController {
         print("lastName: \(lastName)")
         print("email: \(email)")
     }
+    
+    func updateDateViews() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        checkInDateLabel.text = dateFormatter.string(from: checkInDatePicker.date)
+        checkOutDateLabel.text = dateFormatter.string(from: checkOutDatePicker.date)
+    }
 }
+

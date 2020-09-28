@@ -10,7 +10,7 @@
         <!--Root View Controller-->
         <scene sceneID="N5L-Ga-Z9D">
             <objects>
-                <tableViewController id="2rE-oO-CAo" customClass="AddRegistrationTableViewController" customModule="__9HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="2rE-oO-CAo" customClass="AddRegistrationTableView" customModule="__9HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="f3y-eO-O7s">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,18 +92,27 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check-In-Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNn-8U-Mfx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check-In-Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNn-8U-Mfx">
+                                                    <rect key="frame" x="10" y="0.0" width="112.5" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sep 26, 2020" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Up6-yz-8bK">
+                                                    <rect key="frame" x="122.5" y="0.0" width="281.5" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="SNn-8U-Mfx" secondAttribute="bottom" id="Hh8-C7-FqV"/>
-                                                <constraint firstItem="SNn-8U-Mfx" firstAttribute="top" secondItem="xZa-kp-JTm" secondAttribute="top" id="XOT-dw-gPh"/>
-                                                <constraint firstItem="SNn-8U-Mfx" firstAttribute="leading" secondItem="xZa-kp-JTm" secondAttribute="leading" id="oEt-G2-zAF"/>
-                                                <constraint firstAttribute="trailing" secondItem="SNn-8U-Mfx" secondAttribute="trailing" id="wPm-eC-5l4"/>
+                                                <constraint firstItem="SNn-8U-Mfx" firstAttribute="top" secondItem="xZa-kp-JTm" secondAttribute="top" id="HXP-AM-ySt"/>
+                                                <constraint firstAttribute="trailing" secondItem="Up6-yz-8bK" secondAttribute="trailing" constant="10" id="PCr-ex-qHQ"/>
+                                                <constraint firstItem="SNn-8U-Mfx" firstAttribute="leading" secondItem="xZa-kp-JTm" secondAttribute="leading" constant="10" id="bYw-pk-bFo"/>
+                                                <constraint firstAttribute="bottom" secondItem="SNn-8U-Mfx" secondAttribute="bottom" id="qTF-o9-yiu"/>
+                                                <constraint firstAttribute="bottom" secondItem="Up6-yz-8bK" secondAttribute="bottom" id="tzB-h2-UfS"/>
+                                                <constraint firstItem="Up6-yz-8bK" firstAttribute="top" secondItem="xZa-kp-JTm" secondAttribute="top" id="uip-5Z-Egd"/>
+                                                <constraint firstItem="Up6-yz-8bK" firstAttribute="leading" secondItem="SNn-8U-Mfx" secondAttribute="trailing" id="yAR-te-JDE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -128,14 +137,28 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Check-Out-Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyj-Sg-p64">
-                                                    <rect key="frame" x="0.0" y="-1" width="414" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check-Out-Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ue-47-uep">
+                                                    <rect key="frame" x="10" y="0.0" width="126.5" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Sep 28, 2020" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WA5-fA-faG">
+                                                    <rect key="frame" x="301" y="0.0" width="103" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="WA5-fA-faG" secondAttribute="bottom" id="957-Xn-QRb"/>
+                                                <constraint firstItem="WA5-fA-faG" firstAttribute="top" secondItem="q0y-3L-nk6" secondAttribute="top" id="Dfj-XI-wGF"/>
+                                                <constraint firstItem="8Ue-47-uep" firstAttribute="leading" secondItem="q0y-3L-nk6" secondAttribute="leading" constant="10" id="IBk-5N-9UC"/>
+                                                <constraint firstItem="WA5-fA-faG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Ue-47-uep" secondAttribute="trailing" constant="8" symbolic="YES" id="IxH-hC-HZP"/>
+                                                <constraint firstAttribute="bottom" secondItem="8Ue-47-uep" secondAttribute="bottom" id="YHT-53-Th1"/>
+                                                <constraint firstAttribute="trailing" secondItem="WA5-fA-faG" secondAttribute="trailing" constant="10" id="bJN-yr-n6H"/>
+                                                <constraint firstItem="8Ue-47-uep" firstAttribute="top" secondItem="q0y-3L-nk6" secondAttribute="top" id="gHe-3q-cy2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="162" id="10E-yK-8YK">
@@ -168,9 +191,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="checkInDateLabel" destination="SNn-8U-Mfx" id="INb-Xs-7Lr"/>
+                        <outlet property="checkInDateLabel" destination="Up6-yz-8bK" id="rK8-ad-yDY"/>
                         <outlet property="checkInDatePicker" destination="yXx-4L-HyI" id="ykz-jz-J8h"/>
-                        <outlet property="checkOutDateLabel" destination="wyj-Sg-p64" id="tyb-BH-hKq"/>
+                        <outlet property="checkOutDateLabel" destination="WA5-fA-faG" id="pGg-vO-QvA"/>
                         <outlet property="checkOutDatePicker" destination="fhI-Sm-iuM" id="ase-eR-NeJ"/>
                         <outlet property="emailTextField" destination="PTd-xk-rJS" id="id3-mG-BTh"/>
                         <outlet property="firstNameTextField" destination="lnK-qw-jl7" id="uVf-oZ-EEf"/>
