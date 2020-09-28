@@ -23,6 +23,9 @@ class AddRegistrationTableViewController: UITableViewController {
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
     
+    let checkInDateLabelCellIndexPath = IndexPath(row: 0, section: 1)
+    let checkOutDateLabelCellIndexPath = IndexPath(row: 2, section: 1)
+    
     var isCheckInDatePickerShown: Bool = false {
         didSet {
             checkInDatePicker.isHidden = !isCheckInDatePickerShown
@@ -34,7 +37,9 @@ class AddRegistrationTableViewController: UITableViewController {
             checkOutDatePicker.isHidden = !isCheckOutDatePickerShown
         }
     }
-    
+}
+
+extension AddRegistrationTableViewController {
     override func viewDidLoad() {
         updateDateViews()
         super.viewDidLoad()
@@ -78,7 +83,9 @@ class AddRegistrationTableViewController: UITableViewController {
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         updateDateViews()
     }
-    
+}
+
+extension AddRegistrationTableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath {
         case checkInDatePickerCellIndexPath:
@@ -95,6 +102,40 @@ class AddRegistrationTableViewController: UITableViewController {
             }
         default:
             return 44.0
+    }
+}
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath {
+        case checkInDateLabelCellIndexPath:
+            if isCheckInDatePickerShown {
+                isCheckInDatePickerShown = false
+            } else if isCheckOutDatePickerShown {
+                isCheckOutDatePickerShown = false
+                isCheckInDatePickerShown = true
+            } else {
+                isCheckInDatePickerShown = true
+            }
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        
+        case checkOutDateLabelCellIndexPath:
+            if isCheckOutDatePickerShown {
+                isCheckOutDatePickerShown = false
+            } else if isCheckInDatePickerShown {
+                isCheckInDatePickerShown = false
+                isCheckOutDatePickerShown = true
+            } else {
+                isCheckOutDatePickerShown = true
+            }
+            
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        
+        default:
+            break
     }
 }
 }
