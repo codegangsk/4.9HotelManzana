@@ -87,30 +87,7 @@ extension AddRegistrationTableViewController {
         updateNumberOfGuests()
         updateRoomType()
     }
-    
-    @IBAction func doneBarButtonTapped(_ sender: UIBarButtonItem) {
-        let firstName = firstNameTextField.text ?? ""
-        let lastName = lastNameTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let checkInDate = checkInDateLabel.text ?? ""
-        let checkOutDate = checkOutDateLabel.text ?? ""
-        let numberOfAdults = Int(numberOfAdultsStepper.value)
-        let numberOfChildren = Int(numberOfChildrenStepper.value)
-        let hasWifi = wifiSwitch.isOn
-        let roomChoice = roomType?.name ?? "Not Set"
-        
-        print("DONE TAPPED")
-        print("firstName: \(firstName)")
-        print("lastName: \(lastName)")
-        print("email: \(email)")
-        print("checkIn: \(checkInDate)")
-        print("checkOut: \(checkOutDate)")
-        print("numberOfAdults: \(numberOfAdults)")
-        print("numberOfChildren: \(numberOfChildren)")
-        print("wifi: \(hasWifi)")
-        print("roomType: \(roomChoice)")
-    }
-    
+  
     func updateDateViews() {
         checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
         
