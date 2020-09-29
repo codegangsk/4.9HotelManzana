@@ -52,6 +52,29 @@ var isCheckOutDatePickerShown: Bool = false {
     @IBOutlet var roomTypeLabel: UILabel!
 var roomType: RoomType?
     
+    var registration: Registration? {
+        guard let roomType = roomType else { return nil }
+        
+        let firstName = firstNameTextField.text ?? ""
+        let lastName = lastNameTextField.text ?? ""
+        let email = emailTextField.text ?? ""
+        let checkInDate = checkInDatePicker.date
+        let checkOutDate = checkOutDatePicker.date
+        let numberOfAdults = Int(numberOfAdultsStepper.value)
+        let numberOfChildren = Int(numberOfChildrenStepper.value)
+        let hasWifi = wifiSwitch.isOn
+        
+        return Registration(firstName: firstName,
+                            lastName: lastName,
+                            emailAddress: email,
+                            checkInDate: checkInDate,
+                            checkOutDate: checkOutDate,
+                            numberofAdults: numberOfAdults,
+                            numberOfChildren: numberOfChildren,
+                            roomType: roomType,
+                            wifi: hasWifi)
+    }
+    
 }
 
 extension AddRegistrationTableViewController {
@@ -74,6 +97,7 @@ extension AddRegistrationTableViewController {
         let numberOfAdults = Int(numberOfAdultsStepper.value)
         let numberOfChildren = Int(numberOfChildrenStepper.value)
         let hasWifi = wifiSwitch.isOn
+        let roomChoice = roomType?.name ?? "Not Set"
         
         print("DONE TAPPED")
         print("firstName: \(firstName)")
@@ -84,6 +108,7 @@ extension AddRegistrationTableViewController {
         print("numberOfAdults: \(numberOfAdults)")
         print("numberOfChildren: \(numberOfChildren)")
         print("wifi: \(hasWifi)")
+        print("roomType: \(roomChoice)")
     }
     
     func updateDateViews() {
