@@ -22,6 +22,8 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     ["Room Type"]
 ]
     
+    @IBOutlet var doneButton: UIBarButtonItem!
+    
     @IBOutlet var firstNameTextField: UITextField!
     @IBOutlet var lastNameTextField: UITextField!
     @IBOutlet var emailTextField: UITextField!
@@ -62,6 +64,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     var registration = Registration() {
         didSet {
             print("registration: \(registration)")
+            updateDoneButtonState()
         }
     }
 }
@@ -88,7 +91,9 @@ extension AddRegistrationTableViewController {
             updateRoomType()
         }
         configureDatePicker()
+        updateDoneButtonState()
     }
+
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectRoomType" {
@@ -147,10 +152,15 @@ extension AddRegistrationTableViewController {
     @IBAction func cancelButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
-
-}
-
     
+    func updateDoneButtonState() {
+        if registration.isValid {
+            doneButton.isEnabled = true
+        } else {
+            doneButton.isEnabled = false
+        }
+    }
+}
 
 extension AddRegistrationTableViewController {
     
@@ -175,7 +185,7 @@ extension AddRegistrationTableViewController {
 
 extension AddRegistrationTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

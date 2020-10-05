@@ -37,6 +37,16 @@ extension Registration: CustomStringConvertible {
     }
 }
 
+extension Registration {
+    var isValid: Bool {
+        if firstName.isEmpty || lastName.isEmpty || emailAddress.isEmpty || numberOfAdults+numberOfChildren == 0 || roomType == nil  {
+            return false
+        } else {
+            return true
+        }
+    }
+}
+
 struct RoomType: Equatable {
     var id: Int
     var name: String
