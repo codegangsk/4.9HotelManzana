@@ -19,6 +19,7 @@ class SelectRoomTypeTableViewController: UITableViewController {
 extension SelectRoomTypeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

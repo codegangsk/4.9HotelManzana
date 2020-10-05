@@ -12,7 +12,7 @@
             <objects>
                 <tableViewController id="2rE-oO-CAo" customClass="AddRegistrationTableViewController" customModule="__9HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="f3y-eO-O7s">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
@@ -29,6 +29,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didChangeFirstNameTextField:" destination="2rE-oO-CAo" eventType="editingChanged" id="ulk-1U-Yfq"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -50,6 +53,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didChangeLastNameTextField:" destination="2rE-oO-CAo" eventType="editingChanged" id="vKs-Yj-5qR"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -71,6 +77,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didChangeEmailTextField:" destination="2rE-oO-CAo" eventType="editingChanged" id="34j-Nv-8gp"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -127,7 +136,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <action selector="datePickerValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="WCv-g2-WVS"/>
+                                                        <action selector="checkInDatePickerValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="WCv-g2-WVS"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
@@ -175,7 +184,7 @@
                                                     <rect key="frame" x="0.0" y="-1" width="375" height="162"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <action selector="datePickerValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="UVk-4w-D9Y"/>
+                                                        <action selector="checkOutDatePickerValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="Ebr-0M-I6I"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
@@ -195,7 +204,7 @@
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="glf-Je-DaZ">
                                                     <rect key="frame" x="271" y="5" width="94" height="34"/>
                                                     <connections>
-                                                        <action selector="stepperValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="yRL-rN-6GV"/>
+                                                        <action selector="numberOfAdultsStepperValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="yRL-rN-6GV"/>
                                                     </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xX0-r5-0LO">
@@ -235,7 +244,7 @@
                                                 <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="xaT-gA-QCZ">
                                                     <rect key="frame" x="271" y="5" width="94" height="34"/>
                                                     <connections>
-                                                        <action selector="stepperValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="SfC-KD-ijo"/>
+                                                        <action selector="numberOfChildrenStepperValueChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="8Vb-sa-SlC"/>
                                                     </connections>
                                                 </stepper>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXs-xb-Zt8">
@@ -284,6 +293,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FPI-f2-HRI">
                                                     <rect key="frame" x="316" y="6" width="51" height="32"/>
+                                                    <connections>
+                                                        <action selector="wifiSwitchChanged:" destination="2rE-oO-CAo" eventType="valueChanged" id="yok-Io-Y0R"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdq-ZJ-7Qq">
                                                     <rect key="frame" x="273.33333333333331" y="10" width="32.666666666666686" height="24"/>
@@ -345,13 +357,20 @@
                             <outlet property="delegate" destination="2rE-oO-CAo" id="1xe-SW-lVF"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Guest Registration" id="7Tq-YX-QIt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="JMx-QC-6XP">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="D6O-xa-au4">
                             <connections>
-                                <segue destination="wke-nQ-DPl" kind="unwind" unwindAction="unwindFromAddRegistrationWithUnwindSegue:" id="Ca8-Nz-imJ"/>
+                                <segue destination="wke-nQ-DPl" kind="unwind" unwindAction="unwindWithUnwindSegue:" id="PiS-eZ-683"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="JMx-QC-6XP">
+                            <connections>
+                                <segue destination="wke-nQ-DPl" kind="unwind" unwindAction="unwindFromAddRegistrationWithUnwindSegue:" id="Nqc-OH-qAo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="checkInDateLabel" destination="Up6-yz-8bK" id="rK8-ad-yDY"/>
                         <outlet property="checkInDatePicker" destination="yXx-4L-HyI" id="ykz-jz-J8h"/>
@@ -365,20 +384,87 @@
                         <outlet property="numberOfChildrenLabel" destination="yXs-xb-Zt8" id="Iao-be-shL"/>
                         <outlet property="numberOfChildrenStepper" destination="xaT-gA-QCZ" id="2q6-oz-nu9"/>
                         <outlet property="roomTypeLabel" destination="yh3-yJ-pBx" id="S6M-Qq-aPp"/>
-                        <outlet property="wifiSwitch" destination="FPI-f2-HRI" id="I5S-DI-R7r"/>
+                        <outlet property="wifiSwitch" destination="FPI-f2-HRI" id="wS4-PZ-EYd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4fV-ra-vjP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tableViewSection id="mC4-rW-mDf">
+                    <cells>
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dhp-Dv-W2G">
+                            <rect key="frame" x="0.0" y="18" width="375" height="43.5"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dhp-Dv-W2G" id="rrL-Mw-Amw">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jeU-A8-QWJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="jeU-A8-QWJ" firstAttribute="top" secondItem="rrL-Mw-Amw" secondAttribute="top" id="1KZ-58-BE9"/>
+                                    <constraint firstAttribute="trailing" secondItem="jeU-A8-QWJ" secondAttribute="trailing" id="KXS-46-dVw"/>
+                                    <constraint firstItem="jeU-A8-QWJ" firstAttribute="leading" secondItem="rrL-Mw-Amw" secondAttribute="leading" id="daJ-U2-Y02"/>
+                                    <constraint firstAttribute="bottom" secondItem="jeU-A8-QWJ" secondAttribute="bottom" id="zp2-0s-YPR"/>
+                                </constraints>
+                            </tableViewCellContentView>
+                        </tableViewCell>
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fRm-70-BUy">
+                            <rect key="frame" x="0.0" y="61.5" width="375" height="43.5"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fRm-70-BUy" id="OLS-bS-5v7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T18-Hy-Oy1">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="T18-Hy-Oy1" secondAttribute="trailing" id="66G-Rb-Sv9"/>
+                                    <constraint firstItem="T18-Hy-Oy1" firstAttribute="leading" secondItem="OLS-bS-5v7" secondAttribute="leading" id="VFR-dy-hHr"/>
+                                    <constraint firstItem="T18-Hy-Oy1" firstAttribute="top" secondItem="OLS-bS-5v7" secondAttribute="top" id="xcr-PR-Qg3"/>
+                                    <constraint firstAttribute="bottom" secondItem="T18-Hy-Oy1" secondAttribute="bottom" id="yXp-AZ-GRA"/>
+                                </constraints>
+                            </tableViewCellContentView>
+                        </tableViewCell>
+                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Sn7-2g-eEi">
+                            <rect key="frame" x="0.0" y="105" width="375" height="43.5"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sn7-2g-eEi" id="wAz-Yd-wsl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gr0-5w-z74">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Gr0-5w-z74" secondAttribute="trailing" id="GNL-HR-Yc4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gr0-5w-z74" secondAttribute="bottom" id="QaV-Vz-2hG"/>
+                                    <constraint firstItem="Gr0-5w-z74" firstAttribute="leading" secondItem="wAz-Yd-wsl" secondAttribute="leading" id="cMe-lJ-qb5"/>
+                                    <constraint firstItem="Gr0-5w-z74" firstAttribute="top" secondItem="wAz-Yd-wsl" secondAttribute="top" id="qHq-0g-goe"/>
+                                </constraints>
+                            </tableViewCellContentView>
+                        </tableViewCell>
+                    </cells>
+                </tableViewSection>
                 <exit id="wke-nQ-DPl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="164" y="-121.92118226600985"/>
+            <point key="canvasLocation" x="342" y="-109"/>
         </scene>
         <!--Select Room Type Table View Controller-->
         <scene sceneID="cdw-Ib-rYr">
             <objects>
                 <tableViewController id="mlE-1M-Rbr" customClass="SelectRoomTypeTableViewController" customModule="__9HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="lWy-l2-1pt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -416,7 +502,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ofa-gt-iXs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1035" y="-108"/>
+            <point key="canvasLocation" x="1153" y="-109"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Qty-Ve-UPd">
@@ -432,9 +518,9 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mkd-yW-pgo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="-121"/>
+            <point key="canvasLocation" x="1399" y="695"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Guest list-->
         <scene sceneID="Cjx-e4-6Hh">
             <objects>
                 <tableViewController id="ml8-pf-zpW" customClass="RegistrationTableViewController" customModule="__9HotelManzana" customModuleProvider="target" sceneMemberID="viewController">
@@ -466,6 +552,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="2rE-oO-CAo" kind="show" identifier="SeeDetail" id="s47-Qt-pPs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -473,7 +562,7 @@
                             <outlet property="delegate" destination="ml8-pf-zpW" id="Oi7-CI-Axh"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="bQb-FF-6pM">
+                    <navigationItem key="navigationItem" title="Guest list" id="bQb-FF-6pM">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="9fU-up-zUL">
                             <connections>
                                 <segue destination="pnP-yf-n8j" kind="presentation" id="Gfg-C2-Jbx"/>
@@ -483,7 +572,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOI-37-fww" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="164" y="610"/>
+            <point key="canvasLocation" x="343" y="696"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="X4h-Z6-vvk">
@@ -499,9 +588,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6jI-eG-QBN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724" y="610"/>
+            <point key="canvasLocation" x="-470" y="695"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="s47-Qt-pPs"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -8,17 +8,33 @@
 import Foundation
 
 struct Registration {
-    var firstName: String
-    var lastName: String
-    var emailAddress: String
+    var firstName: String = ""
+    var lastName: String = ""
+    var emailAddress: String = ""
     
-    var checkInDate: Date
-    var checkOutDate: Date
-    var numberofAdults: Int
-    var numberOfChildren: Int
+    var checkInDate: Date = Date()
+    var checkOutDate: Date = Date()
+    var numberOfAdults: Int = .zero
+    var numberOfChildren: Int = .zero
     
-    var roomType: RoomType
-    var wifi: Bool
+    var roomType: RoomType?
+    var wifi: Bool = false
+}
+
+extension Registration: CustomStringConvertible {
+    var description: String {
+        return """
+            firstName: \(firstName)
+            lastName: \(lastName)
+            emailAddress: \(emailAddress)
+            checkInDate: \(checkInDate)
+            checkOutDate: \(checkOutDate)
+            numberOfAdults: \(numberOfAdults)
+            numberOfChildren: \(numberOfChildren)
+            roomType: \(roomType)
+            wifi: \(wifi)
+            """
+    }
 }
 
 struct RoomType: Equatable {
