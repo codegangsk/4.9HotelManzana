@@ -19,6 +19,11 @@ struct Registration {
     
     var roomType: RoomType?
     var wifi: Bool = false
+    
+    var numberOfNights: Int = .zero
+    var roomTypeCharges: Int = .zero
+    var wifiCharges: Int = .zero
+    var totalCharges: Int = .zero
 }
 
 extension Registration: CustomStringConvertible {
@@ -33,13 +38,14 @@ extension Registration: CustomStringConvertible {
             numberOfChildren: \(numberOfChildren)
             roomType: \(roomType)
             wifi: \(wifi)
+            numberOfNights: \(numberOfNights)
             """
     }
 }
 
 extension Registration {
     var isValid: Bool {
-        if firstName.isEmpty || lastName.isEmpty || emailAddress.isEmpty || numberOfAdults+numberOfChildren == 0 || roomType == nil  {
+        if firstName.isEmpty || lastName.isEmpty || emailAddress.isEmpty || numberOfAdults+numberOfChildren == 0 || roomType == nil || numberOfNights == 0 {
             return false
         } else {
             return true

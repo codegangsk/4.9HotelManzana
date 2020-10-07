@@ -24,7 +24,7 @@ extension RegistrationTableViewController {
         return registrations.count
     }
     
-    @IBAction func unwindFromAddRegistration(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindFromAddRegistrationAndAdd(unwindSegue: UIStoryboardSegue) {
         let addRegistrationTableViewController = unwindSegue.source as? AddRegistrationTableViewController
         if let registration =  addRegistrationTableViewController?.registration {
             registrations.append(registration)
@@ -32,9 +32,10 @@ extension RegistrationTableViewController {
         }
     }
     
-
-    @IBAction func unwind(unwindSegue: UIStoryboardSegue) {
+    @IBAction func unwindFromAddRegistrationAndCancel(unwindSegue: UIStoryboardSegue) {
+        
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SeeDetail" {
@@ -61,8 +62,11 @@ extension RegistrationTableViewController {
       //  let checkInCheckOutDateAndRoomType = [checkInCheckOutDate, roomTypeName].compactMap { $0 }.joined(separator: " : ")
       // cell.detailTextLabel?.text = checkInCheckOutDateAndRoomType
       
+        
+        if registration.roomType != nil {
         cell.textLabel?.text = registration.firstName + " " + registration.lastName
         cell.detailTextLabel?.text = dateFormatter.string(from: registration.checkInDate) + " - " + dateFormatter.string(from: registration.checkOutDate) + " : " + registration.roomType!.name
+        }
         return cell
     }
 }

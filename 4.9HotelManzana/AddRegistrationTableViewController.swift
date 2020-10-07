@@ -19,7 +19,8 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     ["CheckInDate", "CheckInDatePicker", "CheckOutDate", "checkOutDatePicker"],
     ["numberOfAdults", "numberOfChildren"],
     ["Wi-Fi"],
-    ["Room Type"]
+    ["Room Type"],
+    ["Number Of Nights", "Room Type", "Wifi", "Total"]
 ]
     
     @IBOutlet var doneButton: UIBarButtonItem!
@@ -32,6 +33,10 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     @IBOutlet var checkInDatePicker: UIDatePicker!
     @IBOutlet var checkOutDateLabel: UILabel!
     @IBOutlet var checkOutDatePicker: UIDatePicker!
+    @IBOutlet var numberOfNightsLabel: UILabel!
+    @IBOutlet var roomTypeChargesLabel: UILabel!
+    @IBOutlet var wifiChargesLabel: UILabel!
+    @IBOutlet var totalChargesLabel: UILabel!
     
     let checkInDatePickerCellIndexPath = IndexPath(row: 1, section: 1)
     let checkOutDatePickerCellIndexPath = IndexPath(row: 3, section: 1)
@@ -63,7 +68,7 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
     
     var registration = Registration() {
         didSet {
-            print("registration: \(registration)")
+            print("\(registration)")
             updateDoneButtonState()
         }
     }
@@ -72,9 +77,9 @@ class AddRegistrationTableViewController: UITableViewController, SelectRoomTypeT
 extension AddRegistrationTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let midnightToday = Calendar.current.startOfDay(for: Date())
-        checkInDatePicker.minimumDate = midnightToday
-        checkInDatePicker.date = midnightToday
+        checkInDatePicker.minimumDate = Date()
+        checkInDatePicker.date = Date()
+        checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
         
         firstNameTextField.text = registration.firstName
         lastNameTextField.text = registration.lastName
@@ -85,14 +90,18 @@ extension AddRegistrationTableViewController {
         numberOfChildrenLabel.text = "\(Int(registration.numberOfChildren))"
         wifiSwitch.isOn = registration.wifi
         
+        numberOfNightsLabel.text = "\(registration.numberOfNights)"
+        wifiChargesLabel.text = "$ \(registration.wifiCharges)"
+        
         if registration.roomType != nil {
             roomTypeLabel.text = registration.roomType!.name
+            roomTypeChargesLabel.text = "$ \(registration.roomTypeCharges)"
         } else {
             updateRoomType()
         }
-        configureDatePicker()
+        updateTotalCharges()
         updateDoneButtonState()
-    }
+}
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,6 +115,7 @@ extension AddRegistrationTableViewController {
 
 
 extension AddRegistrationTableViewController {
+    
     @IBAction func didChangeFirstNameTextField(_ sender: UITextField) {
         guard let text = sender.text else { return }
         
@@ -127,26 +137,58 @@ extension AddRegistrationTableViewController {
     @IBAction func checkInDatePickerValueChanged(_ sender: UIDatePicker) {
         registration.checkInDate = sender.date
         checkInDateLabel.text = dateFormatter.string(from: sender.date)
+        updateNumberOfNights()
+        updateTotalCharges()
     }
     
     @IBAction func checkOutDatePickerValueChanged(_ sender: UIDatePicker) {
         registration.checkOutDate = sender.date
         checkOutDateLabel.text = dateFormatter.string(from: sender.date)
+        updateNumberOfNights()
+        updateTotalCharges()
     }
 
     @IBAction func numberOfAdultsStepperValueChanged(_ sender: UIStepper) {
         registration.numberOfAdults = Int(sender.value)
         numberOfAdultsLabel.text = "\(registration.numberOfAdults)"
+        updateTotalCharges()
     }
     
     @IBAction func numberOfChildrenStepperValueChanged(_ sender: UIStepper) {
         registration.numberOfChildren = Int(sender.value)
         numberOfChildrenLabel.text = "\(registration.numberOfChildren)"
+        updateTotalCharges()
     }
     
     @IBAction func wifiSwitchChanged(_ sender: UISwitch) {
         registration.wifi = sender.isOn
         wifiSwitch.isOn = registration.wifi
+        
+        if wifiSwitch.isOn {
+            registration.wifiCharges = 10
+        } else {
+            registration.wifiCharges = 0
+        }
+        wifiChargesLabel.text = "$ \(registration.wifiCharges * (registration.numberOfNights))"
+        updateTotalCharges()
+    }
+    
+    func updateNumberOfNights() {
+        let calendar = Calendar.current
+        let numberOfNights = calendar.dateComponents([.day], from: calendar.startOfDay(for: registration.checkInDate), to: calendar.startOfDay(for: registration.checkOutDate))
+        registration.numberOfNights = numberOfNights.day!
+        numberOfNightsLabel.text = "\(registration.numberOfNights)"
+        updateTotalCharges()
+        }
+
+    func updateTotalCharges() {
+        if registration.roomType?.price != nil {
+        registration.totalCharges = registration.wifiCharges + (registration.numberOfNights * (registration.numberOfAdults + registration.numberOfChildren) * (registration.roomType?.price)!)
+            totalChargesLabel.text = "$ \(registration.totalCharges)"
+        } else {
+        registration.totalCharges = 0
+            totalChargesLabel.text = "$ \(registration.totalCharges)"
+        }
     }
     
     @IBAction func cancelButtonTapped() {
@@ -168,15 +210,17 @@ extension AddRegistrationTableViewController {
         if let roomType = roomType {
             registration.roomType = roomType
             roomTypeLabel.text = roomType.name
+            registration.roomTypeCharges = (registration.roomType?.price)!
+            roomTypeChargesLabel.text = "$ \(registration.roomTypeCharges)"
+            updateTotalCharges()
         } else {
             roomTypeLabel.text = "Not Set"
+            registration.roomTypeCharges = 0
+            roomTypeChargesLabel.text = "$ \(registration.roomTypeCharges)"
+            updateTotalCharges()
         }
     }
-    
-    private func configureDatePicker() {
-        checkOutDatePicker.minimumDate = checkInDatePicker.date.addingTimeInterval(86400)
-    }
-
+   
     func didSelect(roomType: RoomType) {
         self.roomType = roomType
         updateRoomType()
